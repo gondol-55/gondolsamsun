@@ -64,8 +64,42 @@
     }
   }
 
-</style>
 
+/* Genel kutu boyutları */
+* {
+  box-sizing: border-box;
+}
+
+/* Mobil uyumlu sosyal ikonlar */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.social-icons img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Mobil başlıklar ve içerikler */
+@media only screen and (max-width: 768px) {
+  h1, h2, h3 {
+    font-size: 5vw;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .zone-box {
+    padding: 10px;
+    font-size: 4vw;
+  }
+
+  body {
+    font-size: 16px;
+  }
+}
+</style>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>
@@ -341,7 +375,6 @@
 }
 
   </style>
-
 <style>
 #kadro img.card-img-top:hover {
     transform: scale(1.05);
@@ -351,7 +384,6 @@
     cursor: pointer;
 }
 </style>
-
 </head>
 <body>
 <div class="image-background">
@@ -542,7 +574,7 @@
 </div>
 <div class="social-icons">
 <a aria-label="YouTube Kanalı" href="https://www.youtube.com/watch?v=Ei3tVHcdHW8" target="_blank">
-<i  class="fab fa-youtube">
+<i class="fab fa-youtube">
 </i>
 </a>
 <a href="https://instagram.com/gondolsamsun" target="_blank">
@@ -718,71 +750,70 @@
 </section>
 <section id="branches">
 <h2>
-    Şubelerimiz<br><br>
-   </h2>
-<br/>
+    Şubelerimiz<br/><br/>
+</h2>
+<br>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
 <!-- Türkış -->
 <div class="branch">
 <p>
 <strong>
-       <br>Türkiş:
+<br/>Türkiş:
       </strong>
-<br/>
+<br>
 <a href="https://g.co/kgs/PiVXub8" target="_blank">
        Cumhuriyet, Alparslan Blv. No:44, 55200 Atakum/Samsun
       </a>
-</p>
+</br></p>
 <img alt="Türkiş Şubesi" src="resim1.jpeg" style="width: 100%; margin-top: 10px;"/>
 </div>
 <!-- Playstation -->
 <div class="branch">
 <p>
 <strong>
-       <br>Playstation:
+<br/>Playstation:
       </strong>
-<br/>
+<br>
 <a href="https://g.co/kgs/aRU5Ry3" target="_blank">
        Cumhuriyet, Alparslan Blv. No:44, 55200 Atakum/Samsun
       </a>
-</p>
+</br></p>
 <img alt="Playstation Şubesi" src="resim4.jpeg" style="width: 100%; margin-top: 10px;"/>
 </div>
 <!-- Çiftlik -->
 <div class="branch">
 <p>
 <strong>
-       <br>Çiftlik:
+<br/>Çiftlik:
       </strong>
-<br/>
+<br>
 <a href="https://g.co/kgs/HsmcL2u" target="_blank">
        Kale, İstiklal Cd. No:33, 55030 İlkadım/Samsun
       </a>
-</p>
+</br></p>
 <img alt="Çiftlik Şubesi" src="resim3.jpeg" style="width: 100%; margin-top: 10px;"/>
 </div>
 <!-- Atakent -->
 <div class="branch">
 <p>
 <strong>
-       <br>Atakent:
+<br/>Atakent:
       </strong>
-<br/>
+<br>
 <a href="https://g.co/kgs/K1bx3xe" target="_blank">
        Atakent, 3150. Sk. No:19/B, 55200 Atakum/Samsun
       </a>
-</p>
+</br></p>
 <img alt="Atakent Şubesi" src="resim2.jpeg" style="width: 100%; margin-top: 10px;"/>
 </div>
 </div>
-</section>
+</br></section>
 <section class="duyurular py-5" id="kadro">
 <div class="container">
 <div class="section-title text-center mb-4">
 <h2>Kadromuz</h2>
 </div>
-
-<br>  </br>
+<br/>
 <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
 <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
 <div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
@@ -865,13 +896,13 @@
    </h2>
 <p>
     Rezervasyon ve bilgi için:
-    <br/>
+    <br>
     📞 0541 369 71 28
     <br/>
 <a href="https://wa.me/905413697128" target="_blank">
      Whatsapp'tan Ulaş
     </a>
-</p>
+</br></p>
 </section>
 <!-- Geçiş sesi -->
 <audio id="clickSound">
