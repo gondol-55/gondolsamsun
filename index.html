@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<style>
+.social-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+}
+.social-icons li {
+  list-style: none;
+}
+
+  @media only screen and (max-width: 768px) {
+    body {
+      padding: 10px;
+    }
+
+    .container {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    table {
+      width: 100%;
+      font-size: 14px;
+      overflow-x: auto;
+      display: block;
+    }
+
+    th, td {
+      padding: 8px;
+      white-space: nowrap;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-row > div {
+      width: 100% !important;
+    }
+
+    h1 {
+      font-size: 22px;
+      text-align: center;
+    }
+  }
+
+</style>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   Gondol Gaming
+  </title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&amp;display=swap" rel="stylesheet"/>
+<style>
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      background-color: black;
+      overflow-x: hidden;
+    }
+
+    .image-background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      z-index: -3;
+    }
+
+    #bgImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.2;
+    }
+
+    #splashVideoContainer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: -1;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    #splashVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .logo { height: 150px; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav a, section a {
+      color: white;
+      margin: 0 5px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, section a:hover {
+      color: red;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 120px 1rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .zones-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .zone-card {
+      flex: 1 1 400px;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid red;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .zone-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+    }
+
+    .zone-card h2 {
+      color: red;
+      margin-bottom: 1rem;
+    }
+
+    .zone-card h3 {
+      margin: 0.8rem 0 0.4rem;
+      font-size: 1.2rem;
+      text-decoration: underline;
+    }
+
+    .zone-card ul {
+      text-align: left;
+      padding-left: 1.5rem;
+      list-style: disc;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 10;
+    }
+
+    .social-icons a {
+      font-size: 4rem;
+      margin: 10px;
+      color: white;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: red;
+    }
+
+    section {
+      padding: 100px 20px;
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    #logoSplash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: opacity 1s ease;
+      cursor: pointer;
+    }
+
+    #logoSplash img {
+      width: 1000px;
+      animation: growFade 2s ease-in-out forwards;
+    }
+
+    @keyframes growFade {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1.8); opacity: 1; }
+    }
+
+    iframe { max-width: 100%; border: none; }
+
+    ::-webkit-scrollbar { display: none; }
+
+    @media (max-width: 768px) {
+      .zones-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .zone-card {
+        width: 90%;
+      }
+.scroll-slogan {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.scroll-slogan span {
+  display: inline-block;
+  animation: scrollText 10s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+    }
+.scroll-offset {
+  scroll-margin-top: 100px;
+}
+  
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border: 3px solid red;
+  box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+}
+</style>
+<style>
+   .branch {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .branch:hover {
+    transform: scale(1.05); /* Büyütme oranı */
+    box-shadow: 0 0 30px 6px rgba(255, 0, 0, 0.8); /* Daha belirgin gölge */
+  }
+  </style>
+<style>
+   .branch {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 80px 8px rgba(200, 0, 0, 0.8); /* Neon efekti */
+}
+
+.branch:hover {
+  transform: scale(1.05); /* Büyütme efekti */
+  box-shadow: 0 0 20px 8px rgba(200, 0, 0, 0.8); /* Hover gölgesi */
+}
+
+.branch img {
+  border: none;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+  </style>
+
+<style>
+#kadro img.card-img-top:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+<div class="image-background">
+<img alt="Kafe Görseli" id="bgImage" src="kafe-gorseliniz.jpeg"/>
+</div>
+<div id="logoSplash" onclick="skipSplash()">
+<div id="splashVideoContainer">
+<video autoplay="" id="splashVideo" loop="" muted="">
+<source src="rgb-video.mp4" type="video/mp4"/>
+</video>
+</div>
+<img alt="Gondol Logo" src="gondol_logo.png"/>
+</div>
+<header>
+<a href="#home">
+<img alt="Logo" class="logo" src="gondol_logo.png"/>
+</a>
+<nav>
+<a href="#home">
+     Anasayfa
+    </a>
+<a href="#duyurular">
+     Duyurular
+    </a>
+<a href="#about">
+     Hakkımızda
+    </a>
+<a href="#branches">
+     Şubelerimiz
+    </a>
+<a href="#kadro">
+     Kadromuz
+    </a>
+<a href="#contact">
+     İletişim
+    </a>
+</nav>
+</header>
+<div class="hero" id="home">
+<h1>
+    Yeni Teknoloji, Sadece Bizde!
+   </h1>
+<div class="scroll-slogan">
+<span>
+     En iyi oyun deneyimini yaşayın ve yeni teknolojilerle tanışın.
+    </span>
+</div>
+<div class="zones-container">
+<!-- Zone 1 -->
+<div class="zone-card">
+<h2>
+      Zone 1: Yüksek Performans
+     </h2>
+<h3>
+      Sistem Özellikleri
+     </h3>
+<ul>
+<li>
+       Ekran Kartı: ASUS NVIDIA GeForce RTX 4070Tİ SUPER
+      </li>
+<li>
+       İşlemci: AMD Ryzen 7 9800X3D 4.70 GHz
+      </li>
+<li>
+       RAM: Corsair Vengeance Expo Black 32 GB (2X16) 6000 MHz
+      </li>
+<li>
+       Anakart: ASUS EX-B650M-V7
+      </li>
+<li>
+       Soğutma: ASUS ROG Strix LC III 240 ARGB
+      </li>
+</ul>
+<h3>
+      Ekipmanlar
+     </h3>
+<ul>
+<li>
+       Monitör: Asus ROG Swift Pro PG248QP 24.1" 540 Hz
+      </li>
+<li>
+       Klavye: Asus TUF K3 Gen II RGB %96
+      </li>
+<li>
+       Mouse: Logitech G403 Hero
+      </li>
+<li>
+       Kulaklık: GameBooster GB-H44 RGB 7.1
+      </li>
+<li>
+       Mousepad: SteelSeries Qck+ Large
+      </li>
+</ul>
+</div>
+<!-- Zone 2 -->
+<div class="zone-card">
+<h2>
+      Zone 2: Orta Seviye
+     </h2>
+<h3>
+      Sistem Özellikleri
+     </h3>
+<ul>
+<li>
+       Ekran Kartı: ASUS NVIDIA GeForce RTX 4070 SUPER
+      </li>
+<li>
+       İşlemci: AMD Ryzen 7 7800X3D 4.20 GHz
+      </li>
+<li>
+       RAM: Corsair Vengeance Expo Black 32 GB (2X16) 6000 MHz
+      </li>
+<li>
+       Anakart: ASUS EX-B650M-V7
+      </li>
+<li>
+       Soğutma: ASUS ROG Strix LC III 240 ARGB
+      </li>
+</ul>
+<h3>
+      Ekipmanlar
+     </h3>
+<ul>
+<li>
+       Monitör: Asus ROG Strix XG259QNG 24.5" 380 Hz
+      </li>
+<li>
+       Klavye: Asus TUF K3
+      </li>
+<li>
+       Mouse: Logitech G403 Hero
+      </li>
+<li>
+       Kulaklık: Gamepower Home Mihawk Pro 7.1
+      </li>
+<li>
+       Mousepad: SteelSeries Qck+ Large
+      </li>
+</ul>
+</div>
+<!-- Zone 3 -->
+<div class="zone-card">
+<h2>
+      Zone 3: Gelişmiş Performans
+     </h2>
+<h3>
+      Sistem Özellikleri
+     </h3>
+<ul>
+<li>
+       Ekran Kartı: ASUS NVIDIA GeForce RTX 4060Tİ
+      </li>
+<li>
+       İşlemci: AMD Ryzen 5 5600X 3.70GHz
+      </li>
+<li>
+       RAM: Kingston Fury Beast 16 GB (2x8) 3600 MHz
+      </li>
+<li>
+       Anakart: ASUS PRIME B450M-K II
+      </li>
+<li>
+       Soğutma: Asus ROG RYUO 120 RGB
+      </li>
+</ul>
+<h3>
+      Ekipmanlar
+     </h3>
+<ul>
+<li>
+       Monitör: Asus TUF Gaming VG279QM 27" 280 Hz
+      </li>
+<li>
+       Klavye: Asus TUF K3
+      </li>
+<li>
+       Mouse: Logitech G403 Hero
+      </li>
+<li>
+       Kulaklık: Gamepower Home Mihawk Pro 7.1
+      </li>
+<li>
+       Mousepad: SteelSeries Qck+ Large
+      </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="social-icons">
+<a aria-label="YouTube Kanalı" href="https://www.youtube.com/watch?v=Ei3tVHcdHW8" target="_blank">
+<i  class="fab fa-youtube">
+</i>
+</a>
+<a href="https://instagram.com/gondolsamsun" target="_blank">
+<i class="fab fa-instagram">
+</i>
+</a>
+<a href="https://wa.me/905413697128" target="_blank">
+<i class="fab fa-whatsapp">
+</i>
+</a>
+</div>
+<style>
+   .announcement-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+    margin: 40px 0;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .announcement-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    border: 2px solid #f00;
+    border-radius: 16px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 0 10px #f00, 0 0 20px #f00 inset;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .announcement-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #f00, 0 0 25px #f00 inset;
+  }
+
+  .announcement-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .announcement-card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #ff4d4d;
+  }
+
+  .announcement-card p {
+    margin: 0;
+    font-size: 16px;
+    color: #ffeaea;
+  }
+
+  @media (max-width: 768px) {
+    .announcement-card {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+  </style>
+<div class="announcement-board scroll-offset" id="duyurular">
+<div class="announcement-card">
+<img alt="Duyuru 1" src="20kampanya.jpeg"/>
+<h3>
+     🎁 KAMPANYA
+    </h3>
+<p>
+     Atakent ve Çiftlik şubelerinde üyelere özel %20 indirim fırsatını kaçırmayın!
+    </p>
+</div>
+<div class="announcement-card">
+<img alt="Duyuru 2" src="gamenight.jpg"/>
+<h3>
+     📢 Omü-e-Spor &amp; Samü-e-Spor
+    </h3>
+<p>
+     Riot Games sponsorluğunda Omü-e-Spor &amp; Samü-e-Spor ekipleri 24 mayıs gecesi Türkiş şubemizde olacaklar.
+    </p>
+</div>
+<div class="announcement-card">
+<img alt="Duyuru 3" src="araskargo.jpg"/>
+<h3>
+     📦 Aras Kargo
+    </h3>
+<p>
+     Tüm şubelerimiz Aras Burası üyesidir, şubelerimizden kargo teslim alabilir kargolarınızı gönderebilirsiniz.
+    </p>
+</div>
+<div class="announcement-card">
+<img alt="Duyuru 4" src="boss.jpeg"/>
+<h3>
+     🛠 Bakım ve Güncelleme
+    </h3>
+<p>
+     Bakım ve güncelleme çalışmaları Alper Haydaroğlu tarafından devam etmektedir. Fazla bakma takılı kalırsın ;)
+    </p>
+</div>
+</div>
+<section id="about">
+<h2>
+    Hakkımızda
+   </h2>
+<p style="margin-top: 1rem;">
+    2007 yılından bu yana
+    <strong>
+     Samsun
+    </strong>
+    ’da oyun tutkunlarına hizmet veren
+    <strong>
+     Gondol Oyun Merkezleri
+    </strong>
+    , şehirdeki en köklü ve donanımlı oyun merkezlerinden biridir. Bugün itibarıyla
+    <strong>
+     3 internet kafe
+    </strong>
+    ve
+    <strong>
+     1 PlayStation salonu
+    </strong>
+    olmak üzere toplamda
+    <strong>
+     4 şubemiz
+    </strong>
+    le siz değerli oyunculara hizmet sunuyoruz.
+   </p>
+<p style="margin-top: 1rem;">
+    İnternet kafelerimiz ve PlayStation salonumuz, Samsun’un en işlek ve kolay ulaşılabilir bölgeleri olan
+    <strong>
+     Türkiş
+    </strong>
+    ,
+    <strong>
+     Atakent
+    </strong>
+    ve
+    <strong>
+     Çiftlik Caddesi
+    </strong>
+    'nde konumlanmıştır. Her şubemizde en güncel oyunları,
+    <strong>
+     üst düzey bilgisayar sistemleri
+    </strong>
+    ve
+    <strong>
+     profesyonel ekipmanlar
+    </strong>
+    ile deneyimleme imkânı sunuyoruz.
+   </p>
+<p style="margin-top: 1rem;">
+    Özellikle PlayStation salonumuzda bulunan
+    <strong>
+     yarış simülatörleri
+    </strong>
+    , gerçekçi sürüş deneyimiyle fark yaratıyor. Geniş sosyal alanlarımız, güçlü altyapımız ve kaliteli hizmet anlayışımızla hem rekabetçi oyunculara hem de oyun keyfini yaşamak isteyen herkese hitap ediyoruz.
+   </p>
+<p style="margin-top: 1rem;">
+    Bizi sosyal medyadan takip edin:
+    <br/>
+    📷
+    <a href="https://instagram.com/gondolsamsun" style="color: red; text-decoration: underline;" target="_blank">
+     @gondolsamsun
+    </a>
+</p>
+</section>
+<section id="branches">
+<h2>
+    Şubelerimiz<br><br>
+   </h2>
+<br/>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+<!-- Türkış -->
+<div class="branch">
+<p>
+<strong>
+       <br>Türkiş:
+      </strong>
+<br/>
+<a href="https://g.co/kgs/PiVXub8" target="_blank">
+       Cumhuriyet, Alparslan Blv. No:44, 55200 Atakum/Samsun
+      </a>
+</p>
+<img alt="Türkiş Şubesi" src="resim1.jpeg" style="width: 100%; margin-top: 10px;"/>
+</div>
+<!-- Playstation -->
+<div class="branch">
+<p>
+<strong>
+       <br>Playstation:
+      </strong>
+<br/>
+<a href="https://g.co/kgs/aRU5Ry3" target="_blank">
+       Cumhuriyet, Alparslan Blv. No:44, 55200 Atakum/Samsun
+      </a>
+</p>
+<img alt="Playstation Şubesi" src="resim4.jpeg" style="width: 100%; margin-top: 10px;"/>
+</div>
+<!-- Çiftlik -->
+<div class="branch">
+<p>
+<strong>
+       <br>Çiftlik:
+      </strong>
+<br/>
+<a href="https://g.co/kgs/HsmcL2u" target="_blank">
+       Kale, İstiklal Cd. No:33, 55030 İlkadım/Samsun
+      </a>
+</p>
+<img alt="Çiftlik Şubesi" src="resim3.jpeg" style="width: 100%; margin-top: 10px;"/>
+</div>
+<!-- Atakent -->
+<div class="branch">
+<p>
+<strong>
+       <br>Atakent:
+      </strong>
+<br/>
+<a href="https://g.co/kgs/K1bx3xe" target="_blank">
+       Atakent, 3150. Sk. No:19/B, 55200 Atakum/Samsun
+      </a>
+</p>
+<img alt="Atakent Şubesi" src="resim2.jpeg" style="width: 100%; margin-top: 10px;"/>
+</div>
+</div>
+</section>
+<section class="duyurular py-5" id="kadro">
+<div class="container">
+<div class="section-title text-center mb-4">
+<h2>Kadromuz</h2>
+</div>
+
+<br>  </br>
+<div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Alper Haydaroğlu" class="card-img-top neon-frame" src="img/person1.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Alper Haydaroğlu</h5>
+<p class="card-text">"Abi"</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Burak Çanka" class="card-img-top neon-frame" src="img/person2.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Burak Çanka</h5>
+<p class="card-text">"Bekâr"</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Taha Arda Keskin" class="card-img-top neon-frame" src="img/person3.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Taha Arda Keskin</h5>
+<p class="card-text">"Çoban"</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Samed Keser" class="card-img-top neon-frame" src="img/person4.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Samed Keser</h5>
+<p class="card-text">"Stajyer"</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Muhammet Şen" class="card-img-top neon-frame" src="img/person5.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Muhammet Şen</h5>
+<p class="card-text">"Sırtlan"</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Furkan Kaygısız" class="card-img-top neon-frame" src="img/person6.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Furkan Kaygısız</h5>
+<p class="card-text">"Dayı"</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Enes Koskos" class="card-img-top neon-frame" src="img/person7.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Enes Koskos</h5>
+<p class="card-text">"Kosie"</p>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="flex: 0 0 22%; box-sizing: border-box;">
+<div class="card text-center" style="flex: 0 0 22%; box-sizing: border-box;">
+<img alt="Arda Çelebi" class="card-img-top neon-frame" src="img/person8.jpeg"/>
+<div class="card-body">
+<h5 class="card-title">Arda Çelebi</h5>
+<p class="card-text">"Göbek"</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contact">
+<h2>
+    İletişim
+   </h2>
+<p>
+    Rezervasyon ve bilgi için:
+    <br/>
+    📞 0541 369 71 28
+    <br/>
+<a href="https://wa.me/905413697128" target="_blank">
+     Whatsapp'tan Ulaş
+    </a>
+</p>
+</section>
+<!-- Geçiş sesi -->
+<audio id="clickSound">
+<source src="data:audio/mpeg;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCAAwAAAAAAAEAAACdAAACcQCA" type="audio/mpeg"/>
+</audio>
+<script>
+   const clickSound = document.getElementById('clickSound');
+
+    function hideSplash() {
+      document.getElementById('logoSplash').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('logoSplash').style.display = 'none';
+      }, 1000);
+    }
+
+    function skipSplash() {
+      clearTimeout(window.autoSplashTimer);
+      clickSound.play();
+      hideSplash();
+    }
+
+    window.addEventListener('load', () => {
+      window.autoSplashTimer = setTimeout(hideSplash, 5000);
+    });
+  </script>
+<footer style="text-align: center; padding: 30px 10px; color: gray; font-size: 0.9rem;">
+   2025 - Gondol Oyun Merkezleri - Tüm Hakları Saklıdır - Copyright "haydaro-design"
+  </footer>
+</body>
+</html>
